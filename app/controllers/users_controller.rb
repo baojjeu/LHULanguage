@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         log_in @user
-        format.html { redirect_to @user, notice: '註冊成功' }
+        format.html { redirect_to @user, success: '註冊成功' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

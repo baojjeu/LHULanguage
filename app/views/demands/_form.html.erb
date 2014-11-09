@@ -1,7 +1,10 @@
 <div class="container">
-  <%= form_for(@demand) do |f| %>
 
 
+  <%= form_for @demand do |f| %>
+
+    <% @languages = Language.all.map { |lang| [lang.name, lang.id, { 'data-img-src' => image_url("flags/thumbs/#{lang.flag}") }] } %>
+  <%= f.select :language_id, @languages, {}, { class: 'demand-language' } %>
 
     <div class="time-options-field">
       <table class="table">
