@@ -8,7 +8,7 @@ $ ->
   $(".exp-langs, .demand-language").imagepicker
     show_label: true
 
-
+  # http://api.jquery.com/jquery.each/
   $.each $('.check-time').find('input:checkbox'), (k, v) ->
     if v.checked
       $(v).parent('.check-time').addClass 'select'
