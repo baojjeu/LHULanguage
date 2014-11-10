@@ -1,5 +1,6 @@
 $ ->
 
+
   # show demand page
   $(".applicant-link").tooltip
     placement: "bottom"
@@ -9,6 +10,7 @@ $ ->
     show_label: true
 
   # http://api.jquery.com/jquery.each/
+  # Show demand page
   $.each $('.check-time').find('input:checkbox'), (k, v) ->
     if v.checked
       $(v).parent('.check-time').addClass 'select'

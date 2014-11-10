@@ -78,7 +78,9 @@ body {
 }
 
 .alert {
+  position: absolute;
   margin-top: 20px;
+  right: 20px;
 }
 
 .check-time {
