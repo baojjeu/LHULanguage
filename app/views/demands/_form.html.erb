@@ -1,61 +1,62 @@
-<div class="container">
+<%= stylesheet_link_tag 'image-picker.css', media: 'all', 'data-turbolinks-track' => true %>
+<%= form_for @demand do |f| %>
+  <% @languages = Language.all.map { |lang| [lang.name, lang.id, { 'data-img-src' => image_url("flags/thumbs/#{lang.flag}") }] } %>
+<%= f.select :language_id, @languages, {}, { class: 'demand-language' } %>
 
+  <div class="col-md-8 col-md-offset-2">
+    <div class="time-table">
+      <h2>希望時間</h2>
+      <div class="time-options-field">
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>日</th>
+              <th>一</th>
+              <th>二</th>
+              <th>三</th>
+              <th>四</th>
+              <th>五</th>
+              <th>六</th>
+            </tr>
+          </thead>
 
-  <%= form_for @demand do |f| %>
+          <tbody>
+            <tr>
+              <th>早</th>
+              <%= f.collection_check_boxes :arrangement_ids, WeekTime.spec_moment('早'), :id, :name do |t| %>
+                <td class="check-time">
+                  <%= t.check_box %>
+                </td>
+              <% end %>
+            </tr>
 
-    <% @languages = Language.all.map { |lang| [lang.name, lang.id, { 'data-img-src' => image_url("flags/thumbs/#{lang.flag}") }] } %>
-  <%= f.select :language_id, @languages, {}, { class: 'demand-language' } %>
+            <tr>
+              <th>午</th>
+              <%= f.collection_check_boxes :arrangement_ids, WeekTime.spec_moment('午'), :id, :name do |t| %>
+                <td class="check-time">
+                  <%= t.check_box %>
+                </td>
+              <% end %>
+            </tr>
 
-    <div class="time-options-field">
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>日</th>
-            <th>一</th>
-            <th>二</th>
-            <th>三</th>
-            <th>四</th>
-            <th>五</th>
-            <th>六</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <th>早</th>
-
-            <%= f.collection_check_boxes :arrangement_ids, WeekTime.spec_moment('早'), :id, :name do |t| %>
-              <td>
-                <%= t.check_box %>
-              </td>
-            <% end %>
-          </tr>
-
-          <tr>
-            <th>午</th>
-            <%= f.collection_check_boxes :arrangement_ids, WeekTime.spec_moment('午'), :id, :name do |t| %>
-              <td>
-                <%= t.check_box %>
-              </td>
-            <% end %>
-          </tr>
-
-          <tr>
-            <th>晚</th>
-            <%= f.collection_check_boxes :arrangement_ids, WeekTime.spec_moment('晚'), :id, :name do |t| %>
-              <td>
-                <%= t.check_box %>
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
+            <tr>
+              <th>晚</th>
+              <%= f.collection_check_boxes :arrangement_ids, WeekTime.spec_moment('晚'), :id, :name do |t| %>
+                <td class="check-time">
+                  <%= t.check_box %>
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
+  <%= f.text_area :description %>
 
-</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

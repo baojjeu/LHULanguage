@@ -81,6 +81,32 @@ body {
   margin-top: 20px;
 }
 
+.check-time {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  input[type=checkbox] {
+    display: none;
+  }
+  &:hover {
+    cursor: pointer;
+    &:before {
+      content: '\2713';
+      color: #a9a9a9;
+      font-size: 1em;
+    }
+  }
+  &.select {
+    &:before {
+      content: '\2713';
+    }
+  }
+  &:active {
+    background: #e3e3e3;
+  }
+}
+
 // @media (min-width: 1000px) {
 //   .container .yeah {
 //     max-width: 500px;
