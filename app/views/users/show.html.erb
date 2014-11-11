@@ -1,35 +1,23 @@
-<div class="container">
-  <br>
-  <div class="row">
-    <div class="col-xs-6 col-md-4" align="center">
-      <h2></h2>
-      <%= gravatar_for @user %>
-      <h2><%= @user.name %></h2>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-8">
-      <h2>擅長的語言</h2>
-      <ul>
-        <% @user.experienced_languages.each do |l| %>
-          <li><%= link_to(image_tag("flags/thumbs/#{l.flag}"), users_path(good_at: l.flag.split('.')[0])) %></li>
-        <% end %>
-      </ul>
-      <h2>欲交換語言</h2>
-      <ul>
-        <% @user.demands.each do |demand| %>
-          <li>
-            <%= link_to(image_tag("flags/thumbs/#{demand.language.flag}"), demand) %>
-            <ul>
-              <!-- todo: describe how did you figure out with recording casts -->
-              <% if @user == current_user %>
-                <%= form_for demand, url: allow_demand_path(demand) do |f| %>
-                  <%= f.collection_radio_buttons :instructor_id, demand.applicants, :id, :name %>
-                  <%= f.submit %>
-                <% end %>
-              <% end %>
-            </ul>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+<div class="user-header">
+  <%= gravatar_for @user, size: 134, class: 'user-avatar' %>
+  <h2><%= @user.name %></h2>
+
+  <div class="container">
+    <ul class="nav nav-tabs usr-nav" role="tablist">
+      <li><%= nav_link '近期活動', '#' %></li>
+      <li role="presentation"><a href="#">Help</a></li>
+      <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Dropdown <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </div>

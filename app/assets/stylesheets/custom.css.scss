@@ -44,10 +44,11 @@ body {
   z-index: 1;
 }
 
+// show demand page
 .demand {
   .author-panel {
     background: image-url('backgrounds/school.png');
-    border-top: solid #e3e3e3 1.2px;
+
     border-bottom: solid #e3e3e3 1.2px;
     padding: 40px 0;
 
@@ -88,9 +89,11 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
   input[type=checkbox] {
     display: none;
   }
+
   &:hover {
     cursor: pointer;
     &:before {
@@ -99,15 +102,60 @@ body {
       font-size: 1em;
     }
   }
+
   &.select {
     &:before {
       content: '\2713';
     }
   }
+
   &:active {
     background: #e3e3e3;
   }
 }
+
+// show user page
+.user-header {
+  text-align: center;
+  // background: image-url('backgrounds/bkg-header.jpg') no-repeat center center;
+  background: image-url('backgrounds/school.png');
+  border-bottom: solid #e3e3e3 1.2px;
+  padding: 40px 0;
+
+  .user-avatar {
+    display: block;
+    margin: 0 auto;
+
+    // http://boohover.pixnet.net/blog/post/35116159-%E9%99%B0%E5%BD%B1%E6%95%88%E6%9E%9C%E5%8F%8A%E5%85%89%E6%9A%88%E6%95%88%E6%9E%9C%E7%9A%84-box-shadow-(css-property)
+    // box-shadow:4px 4px 12px -2px rgba(20%,20%,40%,0.5);
+
+    // http://creativenauts.me/2014/02/17/rounded-avatars-html-css/
+    width: 154px;
+    height: 154;
+    border: 1px solid #fff;
+    background: #fff;
+
+    -webkit-border-radius: 50%; /* Can also be 50px */
+       -moz-border-radius: 50%;
+            border-radius: 50%;
+
+    img {
+      max-width: 100%;
+      margin: 9px;
+      -webkit-border-radius: 50%; /* Can also be 50px */
+         -moz-border-radius: 50%;
+              border-radius: 50%;
+    }
+  }
+}
+
+.usr-nav {
+  display: table;
+  margin: 0 auto;
+  position: relative;
+  top: 41px;
+}
+
 
 // @media (min-width: 1000px) {
 //   .container .yeah {

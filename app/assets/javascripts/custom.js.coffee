@@ -1,5 +1,7 @@
 $ ->
 
+  $('.alert').delay(500).fadeIn "normal", ->
+    $(this).delay(2500).fadeOut()
 
   # show demand page
   $(".applicant-link").tooltip
