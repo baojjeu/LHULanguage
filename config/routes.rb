@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root               'demands#index'
   get    'signup' => 'users#new'
   get    'login'  => 'sessions#new'
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   resources :users do
+    resource :profile
     resources :demands
     resources :notifications, only: [:index, :create]
   end

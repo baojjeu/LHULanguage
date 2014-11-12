@@ -2,12 +2,10 @@
 <%= form_for(@user, html: { class: 'form-signup' }) do |f| %>
   <h2 class="form-signin-heading">註冊</h2>
 
-  <%= f.text_field :name, class: 'form-control username',
-                                  placeholder: '您的名字',
-                                  autofocus: true %>
 
   <%= f.email_field :email, class: 'form-control email',
-                                    placeholder: 'E-mail' %>
+                                    placeholder: 'E-mail',
+                                    autofocus: true %>
 
   <%= f.password_field :password, class: 'form-control password',
                                   placeholder: '密碼' %>

@@ -5,7 +5,7 @@ class Demand < ActiveRecord::Base
 
   validates :description, presence: true
 
-  # todo:
+  # http://blog.hasmanythrough.com/2007/10/30/self-referential-has-many-through
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
   belongs_to :instructor, class_name: 'User'
   belongs_to :language

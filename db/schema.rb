@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029072416) do
+ActiveRecord::Schema.define(version: 20141112075432) do
 
   create_table "demand_languages", force: true do |t|
     t.integer  "demand_id"
@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(version: 20141029072416) do
 
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
+  create_table "profiles", force: true do |t|
+    t.string   "name"
+    t.string   "nickname"
+    t.integer  "gender",      default: 0
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
   create_table "user_languages", force: true do |t|
     t.integer  "user_id"
     t.integer  "language_id"
@@ -85,7 +95,6 @@ ActiveRecord::Schema.define(version: 20141029072416) do
   add_index "user_languages", ["user_id"], name: "index_user_languages_on_user_id"
 
   create_table "users", force: true do |t|
-    t.string   "name"
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at"
