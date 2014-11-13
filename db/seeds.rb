@@ -7,12 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create([
-  { name: 'Baozi Wu', email: 'baozi.rails@gmail.com', password: 'vvvvvv', password_confirmation: 'vvvvvv' },
-  { name: 'Paotzu'  , email: 'paotzu.wu@gmail.com'  , password: 'vvvvvv', password_confirmation: 'vvvvvv' },
-  { name: 'Justin'  , email: 'justin@gmail.com'  , password: 'vvvvvv', password_confirmation: 'vvvvvv' }
- ])
-
 
 moment = %w[早 午 晚]
 week   = %w[日 一 二 三 四 五 六]
@@ -35,5 +29,18 @@ Language.create([
     { name: '德語'     , flag: 'de.png' }
   ])
 
+
+accounts = {
+  email: ['baozi.rails@gmail.com', 'paotzu.wu@gmail.com', 'baojjeu@gmail.com'],
+  password: 'qqq'
+}
+
+accounts[:email].each do |email|
+  u = User.new email: email,
+               password: accounts[:password],
+               password_confirmation: accounts[:password]
+  u.add_language(3)
+  u.save
+end
 
 p "User: #{User.count}, Language: #{Language.count}"

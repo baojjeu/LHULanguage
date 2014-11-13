@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   has_many :notifications, dependent: :destroy
 
+  # http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html#M001834
   has_one :profile
 
   has_secure_password
@@ -39,5 +40,14 @@ class User < ActiveRecord::Base
 
   def is_author_of?(demand)
     demands.include?(demand)
+  end
+
+  def add_language(qty)
+    while experienced_languages.size != qty.to_i do
+      language = Language.all.sample
+      unless experienced_languages.include? language
+        experienced_languages << language
+      end
+    end
   end
 end

@@ -23,7 +23,7 @@ module SessionsHelper
 
   def redirect_back_or(default, options = {})
     # http://archives.ryandaigle.com/articles/2009/12/20/what-s-new-in-edge-rails-set-flash-in-redirect_to
-    redirect_to(session[:forwarding_url] || default, flash: options)
+    redirect_to(session[:forwarding_url] || default, options)
     session.delete(:forwarding_url)
   end
 end

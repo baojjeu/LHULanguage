@@ -1,5 +1,8 @@
 <% flash.each do |key, value| %>
-<div class="alert alert-<%= key %> fade in" role="alert">
-  <%= value %>
-</div>
+
+  <%# http://stackoverflow.com/questions/4230322/in-ruby-how-do-i-skip-a-loop-in-a-each-loop-similar-to-continue %>
+  <% next if key == 'html_safe' %>
+  <div class="alert alert-<%= key %> fade in" role="alert">
+    <%= value %>
+  </div>
 <% end %>

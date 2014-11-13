@@ -1,33 +1,8 @@
-<%= form_for([User.find(params[:user_id]), @profile]) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
-      <ul>
-      <% @profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :nickname %><br>
-    <%= f.text_field :nickname %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.radio_button :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
+<div class="container">
+  <%# http://guides.rubyonrails.org/routing.html#singular-resources %>
+  <%= form_for [@user, @profile], url: user_profile_path do |f| %>
+    <p><%= f.text_field :name %></p>
+    <p><%= f.text_field :nickname %></p>
     <%= f.submit %>
-  </div>
-<% end %>
+  <% end %>
+</div>
