@@ -2,7 +2,7 @@
   <div class="author-panel">
     <div class="container">
       <div class="demand-lang">
-        <h2><%= @demand.author.name %>同學想學</h2>
+        <h2><%= display_username @demand.author %>同學想學</h2>
         <%= link_to(image_tag("flags/normal/#{@demand.language.flag}"), users_path(good_at: @demand.language.flag.split('.')[0])) %>
         <span class="lang-name"><%= @demand.language.name %></span>
       </div>

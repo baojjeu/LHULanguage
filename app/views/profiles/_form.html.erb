@@ -3,6 +3,7 @@
   <%= form_for [@user, @profile], url: user_profile_path do |f| %>
     <p><%= f.text_field :name %></p>
     <p><%= f.text_field :nickname %></p>
+    <p><%= f.check_box :gender, {multiple: true}, 'male',nil %></p>
     <%= f.submit %>
   <% end %>
 </div>

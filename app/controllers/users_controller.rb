@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         log_in @user
         format.html {
           redirect_to new_user_profile_path(@user),
-            success: '註冊成功，填寫個人資料讓朋友們更加認識您。'
+            success: '註冊成功，請填寫個人資料讓朋友們更加認識您。'
         }
         format.json { render :show, status: :created, location: @user }
       else

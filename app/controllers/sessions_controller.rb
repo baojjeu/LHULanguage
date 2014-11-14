@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       log_in user
 
       # http://stackoverflow.com/questions/26538891/flash-message-with-html-safe-from-the-controller-in-rails-4
-      redirect_back_or user, success: %Q[ 歡迎，#{view_context.link_to('填寫個人資料', new_user_profile_path(user))} ], flash: { html_safe: true }
+      redirect_back_or user, success: %Q[ 歡迎，#{user.profile ? user.profile.name : view_context.link_to('填寫個人資料', new_user_profile_path(user), class: 'alert-link')} ], flash: { html_safe: true }
     else
       flash.now[:danger] = '無效的E-mail 或密碼'
       render :new

@@ -5,7 +5,8 @@ class DemandsController < ApplicationController
   # GET /demands
   # GET /demands.json
   def index
-    @demands = Demand.all
+    @user = User.find(params[:user_id]) if params[:user_id].present?
+    @demands = @user.present? ? @user.demands : Demand.all
   end
 
   # GET /demands/1

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :profile
-    resources :demands
+    resources :demands, only: :index
     resources :notifications, only: [:index, :create]
   end
 

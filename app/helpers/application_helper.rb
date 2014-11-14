@@ -15,4 +15,8 @@ module ApplicationHelper
       image_tag "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{options[:size]}"
     end
   end
+
+  def display_username(user)
+    user.profile ? user.profile.name : user.email
+  end
 end
