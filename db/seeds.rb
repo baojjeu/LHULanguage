@@ -8,8 +8,8 @@
 
 
 
-moment = %w[早 午 晚]
-week   = %w[日 一 二 三 四 五 六]
+moment = %w[Morning Afternoon Night]
+week   = %w[Sun. Mon. Tue. Wed. Thur. Fri. Sat.]
 
 moment.each do |moment|
   week.each do |week|
@@ -19,14 +19,14 @@ moment.each do |moment|
 end
 
 Language.create([
-    { name: '美語'     , flag: 'us.png' },
-    { name: '西語'     , flag: 'es.png' },
-    { name: '繁中'     , flag: 'tw.png' },
-    { name: '簡中'     , flag: 'cn.png' },
-    { name: '日語'     , flag: 'jp.png' },
-    { name: '韓語'     , flag: 'kr.png' },
-    { name: '法語'     , flag: 'fr.png' },
-    { name: '德語'     , flag: 'de.png' }
+    { name: 'English'     , flag: 'us.png' },
+    { name: 'Spanish'     , flag: 'es.png' },
+    { name: 'Traditional Chinese'     , flag: 'tw.png' },
+    { name: 'Simplified Chinese'     , flag: 'cn.png' },
+    { name: 'Japanese'     , flag: 'jp.png' },
+    { name: 'Korean'     , flag: 'kr.png' },
+    { name: 'French'     , flag: 'fr.png' },
+    { name: 'German'     , flag: 'de.png' }
   ])
 
 
