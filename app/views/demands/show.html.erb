@@ -32,35 +32,35 @@
             <tbody>
               <tr>
                 <th>Morning</th>
-                <% WeekTime.spec_moment('早').each do |t| %>
-                <% if @demand.arrangements.include?(t) %>
-                <td><span class="check"></span></td>
-                <% else %>
-                <td></td>
-                <% end %>
+                <% WeekTime.spec_moment('Morning').each do |t| %>
+                  <% if @demand.arrangements.include?(t) %>
+                    <td><span class="check"></span></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
                 <% end %>
 
               </tr>
 
               <tr>
                 <th>Afternoon</th>
-                <% WeekTime.spec_moment('午').each do |t| %>
-                <% if @demand.arrangements.include?(t) %>
-                <td><span class="check"></span></td>
-                <% else %>
-                <td></td>
-                <% end %>
+                <% WeekTime.spec_moment('Afternoon').each do |t| %>
+                  <% if @demand.arrangements.include?(t) %>
+                    <td><span class="check"></span></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
                 <% end %>
               </tr>
 
               <tr>
                 <th>Night</th>
-                <% WeekTime.spec_moment('晚').each do |t| %>
-                <% if @demand.arrangements.include?(t) %>
-                <td><span class="check"></span></td>
-                <% else %>
-                <td></td>
-                <% end %>
+                <% WeekTime.spec_moment('Night').each do |t| %>
+                  <% if @demand.arrangements.include?(t) %>
+                    <td><span class="check"></span></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
                 <% end %>
               </tr>
             </tbody>
