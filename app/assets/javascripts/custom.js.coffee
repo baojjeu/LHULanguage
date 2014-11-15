@@ -1,15 +1,14 @@
 $ ->
 
-  # $('.alert').delay(500).fadeIn "normal", ->
-  #   $(this).delay(2500).fadeOut()
+  $('.alert').delay(500).fadeIn "normal", ->
+    $(this).delay(3000).fadeOut()
 
   # show demand page
   $(".applicant-link").tooltip
     placement: "bottom"
 
-  # Signup page and new demand page
-  $(".exp-langs, .demand-language").imagepicker
-    show_label: true
+  # Profile page and new demand page
+  $(".exp-langs, .demand-language").imagepicker()
 
   # http://api.jquery.com/jquery.each/
   # Show demand page
@@ -28,3 +27,9 @@ $ ->
         $(this).addClass 'select'
       else
         $(this).removeClass 'select'
+
+  # show user page
+  $('.show-user-demand').click ->
+    window.location = $(this).find('a').attr('href')
+
+  $('.empty-demands').remove()

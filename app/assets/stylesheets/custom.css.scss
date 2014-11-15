@@ -6,6 +6,8 @@ html, body {
 }
 
 body {
+  background: image-url('backgrounds/bg.png');
+
   a {
     &:hover {
       text-decoration: none;
@@ -42,6 +44,15 @@ body {
   @extend .has-error;
   position: relative;
   z-index: 1;
+}
+
+// index demand
+.neat-padding {
+  padding-top: 11px;
+}
+
+.show-user-demand {
+  cursor: pointer;
 }
 
 // show demand page

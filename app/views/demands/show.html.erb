@@ -2,8 +2,9 @@
   <div class="author-panel">
     <div class="container">
       <div class="demand-lang">
-        <h2><%= display_username @demand.author %>同學想學</h2>
-        <%= link_to(image_tag("flags/normal/#{@demand.language.flag}"), users_path(good_at: @demand.language.flag.split('.')[0])) %>
+        <h2><%= display_username @demand.author %>wants to learn</h2>
+        <%= link_to(image_tag("flags/normal/#{@demand.language.flag}"),
+            users_path(good_at: language_name(@demand.language))) %>
         <span class="lang-name"><%= @demand.language.name %></span>
       </div>
     </div>
@@ -12,25 +13,25 @@
   <div class="container">
     <div class="col-md-8 col-md-offset-2">
       <div class="time-table">
-        <h2>希望時間</h2>
+        <h2>Schedule</h2>
         <div class="time-options-field">
           <table class="table">
             <thead>
               <tr class="week_time">
                 <th></th>
-                <th>日</th>
-                <th>一</th>
-                <th>二</th>
-                <th>三</th>
-                <th>四</th>
-                <th>五</th>
-                <th>六</th>
+                <th>Sun.</th>
+                <th>Mon.</th>
+                <th>Tue.</th>
+                <th>Wed.</th>
+                <th>Thur.</th>
+                <th>Fri.</th>
+                <th>Sat.</th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <th>早</th>
+                <th>Morning</th>
                 <% WeekTime.spec_moment('早').each do |t| %>
                 <% if @demand.arrangements.include?(t) %>
                 <td><span class="check"></span></td>
@@ -42,7 +43,7 @@
               </tr>
 
               <tr>
-                <th>午</th>
+                <th>Afternoon</th>
                 <% WeekTime.spec_moment('午').each do |t| %>
                 <% if @demand.arrangements.include?(t) %>
                 <td><span class="check"></span></td>
@@ -53,7 +54,7 @@
               </tr>
 
               <tr>
-                <th>晚</th>
+                <th>Night</th>
                 <% WeekTime.spec_moment('晚').each do |t| %>
                 <% if @demand.arrangements.include?(t) %>
                 <td><span class="check"></span></td>
@@ -73,25 +74,27 @@
     <div class="col-md-8 col-md-offset-2">
       <hr>
       <div>
-        <h2>應徵者</h2>
+        <h2>Applicants</h2>
         <% @demand.applicants.each do |applicant| %>
-          <%= link_to applicant, title: applicant.name, class: 'applicant-link' do %>
+          <%= link_to applicant, title: display_username(applicant), class: 'applicant-link' do %>
             <%= gravatar_for applicant, style: 'applicant-thumb', size: 48 %>
           <% end %>
         <% end %>
       </div>
+
+      <!-- TODO: revised -->
       <div class="pull-right">
         <% if logged_in? %>
             <% if current_user.already_apply_for?(@demand) %>
-              <%= link_to '已經應徵', '#', class: 'btn btn-primary disabled' %>
+              <%= link_to 'Applied', '#', class: 'btn btn-primary disabled' %>
             <% end %>
 
             <% unless current_user.is_author_of?(@demand) || current_user.already_apply_for?(@demand) %>
-              <%= link_to '我要應徵', apply_form_demand_path(@demand), class: 'btn btn-success' %>
+              <%= link_to 'Apply', apply_form_demand_path(@demand), class: 'btn btn-success' %>
             <% end %>
           </div>
         <% else %>
-          <%= link_to '我要應徵', apply_form_demand_path(@demand), class: 'btn btn-success' %>
+          <%= link_to 'Apply', apply_form_demand_path(@demand), class: 'btn btn-success' %>
         <% end %>
       </div>
     </div>

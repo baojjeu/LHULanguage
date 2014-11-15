@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
 
+  # http://guides.rubyonrails.org/active_record_querying.html#joining-tables
   scope :good_at, -> (lang) {
-    joins(:experienced_languages).where(languages: { flag: "#{lang}.png" }) if lang.present?
+    joins(profile: :experienced_languages).where(languages: { flag: "#{lang}.png" })
   }
 
   validates :email, :password, :password_confirmation, presence: true
@@ -10,9 +11,6 @@ class User < ActiveRecord::Base
 
   has_many :demand_users
   has_many :applied_demands, through: :demand_users, source: :demand
-
-  has_many :user_languages
-  has_many :experienced_languages, through: :user_languages, source: :language
 
   has_many :notifications, dependent: :destroy
 

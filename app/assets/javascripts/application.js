@@ -15,7 +15,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
-//= require pangu
 //= require image-picker.min
+//= require pangu
 //= require turbolinks
 //= require_tree .

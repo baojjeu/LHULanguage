@@ -41,7 +41,7 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:name, :nickname, :gender, :description)
+      params.require(:profile).permit(:name, :nickname, :gender, :description, { experienced_language_ids: [] })
     end
 
     def finish_profile?

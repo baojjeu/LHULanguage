@@ -1,18 +1,22 @@
-<% provide :title, "登入" %>
+<% provide :title, "Log in" %>
 
 <!-- The path form will send requests POST sessions#create -->
 <%= form_for :session, url: login_path, html: { class: 'form-signin' } do |f| %>
-  <h2 class="form-signin-heading">登入</h2>
+  <h2 class="form-signin-heading">Log in</h2>
 
 
   <%= f.email_field :email, class: 'form-control',
                             placeholder: 'E-mail',
                             autofocus: true,
                             value: (params[:session].present? ? params[:session][:email] : "") %>
+                            <%# ife in ERB %>
 
-  <%= f.password_field :password, class: 'form-control', placeholder: '密碼' %>
+  <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
 
-  <div class="no-account">還沒有帳號嗎？<%= link_to '註冊一個', signup_path %>吧。</div>
+  <div class="no-account">
+    Got no account? Go
+    <%= link_to 'signup', signup_path %>
+  </div>
 
-  <%= f.submit '登入', class: 'btn btn-lg btn-success btn-block' %>
+  <%= f.submit 'Login', class: 'btn btn-lg btn-success btn-block' %>
 <% end %>

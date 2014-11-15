@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         log_in @user
         format.html {
           redirect_to new_user_profile_path(@user),
-            success: '註冊成功，請填寫個人資料讓朋友們更加認識您。'
+            success: 'Signup successfully, go finishing your profile in order to make people know you more.'
         }
         format.json { render :show, status: :created, location: @user }
       else
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, success: '個人資料修改成功' }
+        format.html { redirect_to @user, success: 'Update' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -74,6 +74,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, { experienced_language_ids: [] })
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
 end

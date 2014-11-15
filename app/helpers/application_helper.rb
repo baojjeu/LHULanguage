@@ -19,4 +19,8 @@ module ApplicationHelper
   def display_username(user)
     user.profile ? user.profile.name : user.email
   end
+
+  def language_name(language)
+    language.flag.split('.')[0]
+  end
 end

@@ -1,9 +1,22 @@
+<%= stylesheet_link_tag  'profile-image-picker.css', media: 'all', 'data-turbolinks-track' => true %>
+
 <div class="container">
   <%# http://guides.rubyonrails.org/routing.html#singular-resources %>
   <%= form_for [@user, @profile], url: user_profile_path do |f| %>
     <p><%= f.text_field :name %></p>
     <p><%= f.text_field :nickname %></p>
     <p><%= f.check_box :gender, {multiple: true}, 'male',nil %></p>
+    <%# tried fail %>
+    <%# f.collection_select :experienced_language_ids, Language.all, :id, :name, {}, { multiple: true } %>
+    <%# collection_select(object, method, collection, value_method, text_method, options = {}, html_options = {}) %>
+
+
+    <%# http://stackoverflow.com/questions/9573989/adding-extra-html-attributes-to-a-rails-collection-select %>
+    <%# http://api.rubyonrails.org/classes/ActionView/Helpers/AssetUrlHelper.html %>
+    <%# http://rvera.github.io/image-picker/ %>
+    <h3 class="form-signin-heading">請選擇您擅長的語言</h2>
+    <% @languages = Language.all.map { |lang| [lang.name, lang.id, { 'data-img-src' => image_url("flags/thumbs/#{lang.flag}") }] } %>
+    <%= f.select :experienced_language_ids, @languages, {}, { multiple: true, class: 'exp-langs' } %>
     <%= f.submit %>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
-<% provide :title, "註冊" %>
+<% provide :title, "Sign up" %>
 <%= form_for(@user, html: { class: 'form-signup' }) do |f| %>
-  <h2 class="form-signin-heading">註冊</h2>
+  <h2 class="form-signin-heading">Sign up</h2>
 
 
   <%= f.email_field :email, class: 'form-control email',
@@ -8,26 +8,14 @@
                                     autofocus: true %>
 
   <%= f.password_field :password, class: 'form-control password',
-                                  placeholder: '密碼' %>
+                                  placeholder: 'Password' %>
 
   <%= f.password_field :password_confirmation, class: 'form-control password-confirmation',
-                                               placeholder: '確認密碼' %>
-
-  <%# tried fail %>
-  <%# f.collection_select :experienced_language_ids, Language.all, :id, :name, {}, { multiple: true } %>
-  <%# collection_select(object, method, collection, value_method, text_method, options = {}, html_options = {}) %>
+                                               placeholder: 'Password confirmation' %>
 
 
-  <%# http://stackoverflow.com/questions/9573989/adding-extra-html-attributes-to-a-rails-collection-select %>
-  <%# http://api.rubyonrails.org/classes/ActionView/Helpers/AssetUrlHelper.html %>
-  <%# http://rvera.github.io/image-picker/ %>
-  <h3 class="form-signin-heading">請選擇您擅長的語言</h2>
-  <% @languages = Language.all.map { |lang| [lang.name, lang.id, { 'data-img-src' => image_url("flags/thumbs/#{lang.flag}") }] } %>
-  <%= f.select :experienced_language_ids, @languages, {}, { multiple: true, class: 'exp-langs' } %>
+  <div class="has-account">Got account? <%= link_to 'Log in', login_path %> now</div>
 
 
-  <div class="has-account">有帳號了嗎？<%= link_to '現在就登入', login_path %>吧。</div>
-
-
-  <%= f.submit '註冊', class: 'btn btn-lg btn-success btn-block' %>
+  <%= f.submit 'Submit', class: 'btn btn-lg btn-success btn-block' %>
 <% end %>

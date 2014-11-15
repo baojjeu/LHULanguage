@@ -1,32 +1,44 @@
 <div class="container">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>想學</th>
-        <th>聯絡人</th>
-        <th></th>
-      </tr>
-    </thead>
+  <h1>All demands</h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Language</th>
+            <th>Author</th>
+            <th></th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <% @demands.available.each do |demand| %>
-      <tr>
-        <td>
-          <%= link_to(users_path(good_at: demand.language.flag.split('.')[0])) do %>
-            <%= image_tag("flags/thumbs/#{demand.language.flag}") %>
-            <span><%= demand.language.name %></span>
-          <% end %>
-        </td>
+        <tbody>
+          <% @demands.available.each do |demand| %>
+          <tr>
+            <%# http://techoctave.com/c7/posts/23-rails-date-formats %>
+            <td><div class="neat-padding"><%= demand.created_at.strftime("%Y-%d-%m") %></div></td>
+            <td>
+              <%= link_to(users_path(good_at: language_name(demand.language))) do %>
+                <%= image_tag("flags/thumbs/#{demand.language.flag}") %>
+                <span><%= demand.language.name %></span>
+              <% end %>
+            </td>
 
-        <td>
-          <%= link_to demand.author do %>
-            <%= gravatar_for(demand.author, size: 48) %>
-            <span><%= display_username demand.author %></span>
+            <td>
+              <%= link_to demand.author do %>
+                <%= gravatar_for(demand.author, size: 48) %>
+                <span><%= display_username demand.author %></span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to demand do %>
+                <div class="neat-padding">Check</div>
+              <% end %>
+            </td>
+          </tr>
           <% end %>
-        </td>
-        <td><%= link_to '我有興趣', demand %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
