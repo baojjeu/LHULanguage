@@ -16,11 +16,10 @@
           <% @demands.available.each do |demand| %>
           <tr>
             <%# http://techoctave.com/c7/posts/23-rails-date-formats %>
-            <td><div class="neat-padding"><%= demand.created_at.strftime("%Y-%d-%m") %></div></td>
+            <td><div class="neat-padding"><%= demand.created_at.strftime("%Y-%m-%d") %></div></td>
             <td>
               <%= link_to(users_path(good_at: language_name(demand.language))) do %>
                 <%= image_tag("flags/thumbs/#{demand.language.flag}") %>
-                <span><%= demand.language.name %></span>
               <% end %>
             </td>
 

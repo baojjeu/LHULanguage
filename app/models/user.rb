@@ -39,13 +39,4 @@ class User < ActiveRecord::Base
   def is_author_of?(demand)
     demands.include?(demand)
   end
-
-  def add_language(qty)
-    while experienced_languages.size != qty.to_i do
-      language = Language.all.sample
-      unless experienced_languages.include? language
-        experienced_languages << language
-      end
-    end
-  end
 end

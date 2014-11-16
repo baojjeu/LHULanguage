@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def display_username(user)
-    user.profile ? user.profile.name : user.email
+    user.profile ? user.profile.nickname : user.email
   end
 
   def language_name(language)

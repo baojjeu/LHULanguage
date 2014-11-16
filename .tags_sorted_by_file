@@ -24,6 +24,7 @@ update	app/controllers/demands_controller.rb	/^  def update$/;"	f	class:DemandsC
 NotificationsController	app/controllers/notifications_controller.rb	/^class NotificationsController < ApplicationController$/;"	c
 index	app/controllers/notifications_controller.rb	/^  def index$/;"	f	class:NotificationsController
 ProfilesController	app/controllers/profiles_controller.rb	/^class ProfilesController < ApplicationController$/;"	c
+access_for_editing	app/controllers/profiles_controller.rb	/^    def access_for_editing$/;"	f	class:ProfilesController
 create	app/controllers/profiles_controller.rb	/^  def create$/;"	f	class:ProfilesController
 edit	app/controllers/profiles_controller.rb	/^  def edit$/;"	f	class:ProfilesController
 finish_profile?	app/controllers/profiles_controller.rb	/^    def finish_profile?$/;"	f	class:ProfilesController
@@ -48,7 +49,9 @@ show	app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersControlle
 update	app/controllers/users_controller.rb	/^  def update$/;"	f	class:UsersController
 user_params	app/controllers/users_controller.rb	/^    def user_params$/;"	f	class:UsersController
 ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+display_username	app/helpers/application_helper.rb	/^  def display_username(user)$/;"	f	class:ApplicationHelper
 gravatar_for	app/helpers/application_helper.rb	/^  def gravatar_for(user, options = { size: 128, class: nil })$/;"	f	class:ApplicationHelper
+language_name	app/helpers/application_helper.rb	/^  def language_name(language)$/;"	f	class:ApplicationHelper
 nav_link	app/helpers/application_helper.rb	/^  def nav_link(link_text, link_path)$/;"	f	class:ApplicationHelper
 DemandsHelper	app/helpers/demands_helper.rb	/^module DemandsHelper$/;"	m
 NotificationsHelper	app/helpers/notifications_helper.rb	/^module NotificationsHelper$/;"	m
@@ -69,14 +72,13 @@ Language	app/models/language.rb	/^class Language < ActiveRecord::Base$/;"	c
 Notification	app/models/notification.rb	/^class Notification < ActiveRecord::Base$/;"	c
 send_notification_with	app/models/notification.rb	/^  def self.send_notification_with(applicant, demand)$/;"	F	class:Notification
 Profile	app/models/profile.rb	/^class Profile < ActiveRecord::Base$/;"	c
+ProfileLanguage	app/models/profile_language.rb	/^class ProfileLanguage < ActiveRecord::Base$/;"	c
 User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
-add_language	app/models/user.rb	/^  def add_language(qty)$/;"	f	class:User
 already_apply_for?	app/models/user.rb	/^  def already_apply_for?(demand)$/;"	f	class:User
 apply!	app/models/user.rb	/^  def apply!(demand)$/;"	f	class:User
 cancel_apply!	app/models/user.rb	/^  def cancel_apply!(demand)$/;"	f	class:User
 format_email!	app/models/user.rb	/^  def format_email!$/;"	f	class:User
 is_author_of?	app/models/user.rb	/^  def is_author_of?(demand)$/;"	f	class:User
-UserLanguage	app/models/user_language.rb	/^class UserLanguage < ActiveRecord::Base$/;"	c
 WeekTime	app/models/week_time.rb	/^class WeekTime < ActiveRecord::Base$/;"	c
 Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:LHUlanguage
 LHUlanguage	config/application.rb	/^module LHUlanguage$/;"	m
@@ -116,6 +118,8 @@ CreateProfiles	db/migrate/20141112073544_create_profiles.rb	/^class CreateProfil
 change	db/migrate/20141112073544_create_profiles.rb	/^  def change$/;"	f	class:CreateProfiles
 AddUserToProfile	db/migrate/20141112075432_add_user_to_profile.rb	/^class AddUserToProfile < ActiveRecord::Migration$/;"	c
 change	db/migrate/20141112075432_add_user_to_profile.rb	/^  def change$/;"	f	class:AddUserToProfile
+ResetUserExperiencedLanguages	db/migrate/20141114061042_reset_user_experienced_languages.rb	/^class ResetUserExperiencedLanguages < ActiveRecord::Migration$/;"	c
+change	db/migrate/20141114061042_reset_user_experienced_languages.rb	/^  def change$/;"	f	class:ResetUserExperiencedLanguages
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 DemandsControllerTest	test/controllers/demands_controller_test.rb	/^class DemandsControllerTest < ActionController::TestCase$/;"	c
 ProfilesControllerTest	test/controllers/profiles_controller_test.rb	/^class ProfilesControllerTest < ActionController::TestCase$/;"	c

@@ -1,6 +1,7 @@
 class Profile < ActiveRecord::Base
 
-  enum gender: { male: 0, female: 1 }
+  GENDER = [:male, :female]
+  enum gender: GENDER
 
   belongs_to :user
   has_many :profile_languages

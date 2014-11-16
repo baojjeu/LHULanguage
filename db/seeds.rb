@@ -8,7 +8,7 @@
 
 
 
-moment = %w[Morning Afternoon Night]
+moment = %w[Morning Noon Night]
 week   = %w[Sun. Mon. Tue. Wed. Thur. Fri. Sat.]
 
 moment.each do |moment|
@@ -31,7 +31,7 @@ Language.create([
 
 
 accounts = {
-  email: ['baozi.rails@gmail.com', 'paotzu.wu@gmail.com', 'baojjeu@gmail.com'],
+  email: ['baozi.rails@gmail.com', 'paotzu.wu@gmail.com', 'paotzu@gmail.com'],
   password: 'qqq'
 }
 
@@ -39,7 +39,6 @@ accounts[:email].each do |email|
   u = User.new email: email,
                password: accounts[:password],
                password_confirmation: accounts[:password]
-  u.add_language(3)
   u.save
 end
 

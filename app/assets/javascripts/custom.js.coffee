@@ -29,6 +29,7 @@ $ ->
         $(this).removeClass 'select'
 
   # show user page
+  # http://stackoverflow.com/questions/4904938/link-entire-table-row
   $('.show-user-demand').click ->
     window.location = $(this).find('a').attr('href')
 

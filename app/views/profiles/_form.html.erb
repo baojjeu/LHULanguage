@@ -1,22 +1,46 @@
-<%= stylesheet_link_tag  'profile-image-picker.css', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag  'image-picker.css', media: 'all', 'data-turbolinks-track' => true %>
 
-<div class="container">
-  <%# http://guides.rubyonrails.org/routing.html#singular-resources %>
-  <%= form_for [@user, @profile], url: user_profile_path do |f| %>
-    <p><%= f.text_field :name %></p>
-    <p><%= f.text_field :nickname %></p>
-    <p><%= f.check_box :gender, {multiple: true}, 'male',nil %></p>
-    <%# tried fail %>
-    <%# f.collection_select :experienced_language_ids, Language.all, :id, :name, {}, { multiple: true } %>
-    <%# collection_select(object, method, collection, value_method, text_method, options = {}, html_options = {}) %>
+<div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%# http://guides.rubyonrails.org/routing.html#singular-resources %>
+      <%= form_for [@user, @profile], url: user_profile_path do |f| %>
 
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
 
-    <%# http://stackoverflow.com/questions/9573989/adding-extra-html-attributes-to-a-rails-collection-select %>
-    <%# http://api.rubyonrails.org/classes/ActionView/Helpers/AssetUrlHelper.html %>
-    <%# http://rvera.github.io/image-picker/ %>
-    <h3 class="form-signin-heading">請選擇您擅長的語言</h2>
-    <% @languages = Language.all.map { |lang| [lang.name, lang.id, { 'data-img-src' => image_url("flags/thumbs/#{lang.flag}") }] } %>
-    <%= f.select :experienced_language_ids, @languages, {}, { multiple: true, class: 'exp-langs' } %>
-    <%= f.submit %>
-  <% end %>
+        <div class="form-group">
+          <%= f.label :nickname %>
+          <%= f.text_field :nickname, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :gender %> <br>
+          <% Profile.genders.keys.each do |key| %>
+            <label class="radio-inline">
+              <%= f.radio_button :gender, key, { checked: (@profile.gender == key) } %>
+              <%= key.capitalize %>
+            </label>
+          <% end %>
+        </div>
+
+        <%# tried fail %>
+        <%# f.collection_select :experienced_language_ids, Language.all, :id, :name, {}, { multiple: true } %>
+        <%# collection_select(object, method, collection, value_method, text_method, options = {}, html_options = {}) %>
+
+        <%# http://stackoverflow.com/questions/9573989/adding-extra-html-attributes-to-a-rails-collection-select %>
+        <%# http://api.rubyonrails.org/classes/ActionView/Helpers/AssetUrlHelper.html %>
+        <%# http://rvera.github.io/image-picker/ %>
+        <% @languages = Language.all.map { |lang| [lang.name, lang.id, { 'data-img-src' => image_url("flags/thumbs/#{lang.flag}") }] } %>
+        <%= f.select :experienced_language_ids, @languages, {}, { multiple: true, class: 'exp-langs' } %>
+
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-success' %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
 </div>

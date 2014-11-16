@@ -2,7 +2,8 @@
   <div class="author-panel">
     <div class="container">
       <div class="demand-lang">
-        <h2><%= display_username @demand.author %>wants to learn</h2>
+        <h2><%= display_username @demand.author %></h2>
+        <div style="color: gray">wants to learn</div>
         <%= link_to(image_tag("flags/normal/#{@demand.language.flag}"),
             users_path(good_at: language_name(@demand.language))) %>
         <span class="lang-name"><%= @demand.language.name %></span>
@@ -13,25 +14,25 @@
   <div class="container">
     <div class="col-md-8 col-md-offset-2">
       <div class="time-table">
-        <h2>Schedule</h2>
+        <h2>Expected schedules</h2>
         <div class="time-options-field">
           <table class="table">
             <thead>
               <tr class="week_time">
                 <th></th>
-                <th>Sun.</th>
-                <th>Mon.</th>
-                <th>Tue.</th>
-                <th>Wed.</th>
-                <th>Thur.</th>
-                <th>Fri.</th>
-                <th>Sat.</th>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thur</th>
+                <th>Fri</th>
+                <th>Sat</th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <th>Morning</th>
+                <th>A.M.</th>
                 <% WeekTime.spec_moment('Morning').each do |t| %>
                   <% if @demand.arrangements.include?(t) %>
                     <td><span class="check"></span></td>
@@ -43,8 +44,8 @@
               </tr>
 
               <tr>
-                <th>Afternoon</th>
-                <% WeekTime.spec_moment('Afternoon').each do |t| %>
+                <th>Noon</th>
+                <% WeekTime.spec_moment('Noon').each do |t| %>
                   <% if @demand.arrangements.include?(t) %>
                     <td><span class="check"></span></td>
                   <% else %>
@@ -54,7 +55,7 @@
               </tr>
 
               <tr>
-                <th>Night</th>
+                <th>P.M.</th>
                 <% WeekTime.spec_moment('Night').each do |t| %>
                   <% if @demand.arrangements.include?(t) %>
                     <td><span class="check"></span></td>
@@ -86,7 +87,7 @@
       <div class="pull-right">
         <% if logged_in? %>
             <% if current_user.already_apply_for?(@demand) %>
-              <%= link_to 'Applied', '#', class: 'btn btn-primary disabled' %>
+              <%= link_to 'Applied', '#', class: 'btn btn-success disabled' %>
             <% end %>
 
             <% unless current_user.is_author_of?(@demand) || current_user.already_apply_for?(@demand) %>
