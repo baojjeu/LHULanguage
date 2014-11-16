@@ -64,24 +64,36 @@ body {
 
 
 // show demand page
-.demand {
-  .author-panel {
-    background: image-url('backgrounds/school.png');
 
-    border-bottom: solid #e3e3e3 1.2px;
-    padding: 40px 0;
+.author-panel {
+  background: image-url('backgrounds/school.png');
 
-    .demand-lang {
-      text-align: center;
-      .lang-name {
-        display: block;
-        color: gray;
-        margin-top: -15px;
-        font-size: 14px;
-      }
+  border-bottom: solid #e3e3e3 1.2px;
+  padding: 40px 0;
+  margin-bottom: 50px;
+
+  a {
+    color: #000;
+  }
+
+  .demand-lang {
+    text-align: center;
+    .lang-name {
+      display: block;
+      color: gray;
+      margin-top: -15px;
+      font-size: 14px;
     }
   }
 }
+
+.show-demand-tab {
+  display: table;
+  margin: 0 auto;
+  position: relative;
+  top: 41px;
+}
+
 
 .applicant-thumb {
   border: 1px solid #e3e3e3;
