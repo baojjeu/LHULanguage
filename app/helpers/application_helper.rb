@@ -9,10 +9,10 @@ module ApplicationHelper
     end
   end
 
-  def gravatar_for(user, options = { size: 128, class: nil })
+  def gravatar_for(user, options = { size: 128, class: nil, image_class: nil, title: nil })
     gravatar_id = Digest::MD5.hexdigest(user.email)
     content_tag :span, class: options[:class] do
-      image_tag "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{options[:size]}"
+      image_tag "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{options[:size]}", title: options[:title], class: options[:image_class]
     end
   end
 

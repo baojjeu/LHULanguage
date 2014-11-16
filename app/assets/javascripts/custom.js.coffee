@@ -4,11 +4,15 @@ $ ->
     $(this).delay(3000).fadeOut()
 
   # show demand page
-  $(".applicant-link").tooltip
+  $(".applicant-avatar").tooltip
     placement: "bottom"
 
+  $('.index-demand-language').tooltip
+    placement: "right"
+
   # Profile page and new demand page
-  $(".exp-langs, .demand-language").imagepicker()
+  $(".exp-langs, .demand-language").imagepicker
+    show_label: true
 
   # http://api.jquery.com/jquery.each/
   # Show demand page

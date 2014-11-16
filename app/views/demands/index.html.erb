@@ -19,7 +19,7 @@
             <td><div class="neat-padding"><%= demand.created_at.strftime("%Y-%m-%d") %></div></td>
             <td>
               <%= link_to(users_path(good_at: language_name(demand.language))) do %>
-                <%= image_tag("flags/thumbs/#{demand.language.flag}") %>
+                <%= image_tag("flags/thumbs/#{demand.language.flag}", class: 'index-demand-language', title: demand.language.name) %>
               <% end %>
             </td>
 

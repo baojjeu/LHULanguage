@@ -1,6 +1,7 @@
 <div class="demand">
   <div class="author-panel">
     <div class="container">
+
       <div class="demand-lang">
         <h2><%= display_username @demand.author %></h2>
         <div style="color: gray">wants to learn</div>
@@ -77,8 +78,8 @@
       <div>
         <h2>Applicants</h2>
         <% @demand.applicants.each do |applicant| %>
-          <%= link_to applicant, title: display_username(applicant), class: 'applicant-link' do %>
-            <%= gravatar_for applicant, style: 'applicant-thumb', size: 48 %>
+          <%= link_to applicant do %>
+            <%= gravatar_for applicant, style: 'applicant-thumb', size: 48, title: display_username(applicant), image_class: 'applicant-avatar' %>
           <% end %>
         <% end %>
       </div>
