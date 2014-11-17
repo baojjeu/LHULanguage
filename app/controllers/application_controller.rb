@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
 
   private
+    # http://stackoverflow.com/questions/26538891/flash-message-with-html-safe-from-the-controller-in-rails-4
     def set_html_safe
       flash.now[:success] = flash[:success].html_safe if flash[:html_safe] && flash[:success]
     end

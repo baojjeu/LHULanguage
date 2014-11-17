@@ -1,30 +1,23 @@
 class DemandsController < ApplicationController
-  before_action :set_demand, only: [:show, :edit, :update, :destroy, :apply, :cancel_apply, :allow, :apply_form]
+  before_action :set_demand, only: [:show, :edit, :update, :destroy, :apply, :allow, :apply_form]
   before_action :redirect_if_non_logged_in, only: [:new, :edit, :create, :update, :apply, :apply_form]
+  before_action :check_is_author, only: :apply_form
 
-  # GET /demands
-  # GET /demands.json
   def index
     @user = User.find(params[:user_id]) if params[:user_id].present?
     @demands = @user.present? ? @user.demands : Demand.all
   end
 
-  # GET /demands/1
-  # GET /demands/1.json
   def show
   end
 
-  # GET /demands/new
   def new
     @demand = current_user.demands.new
   end
 
-  # GET /demands/1/edit
   def edit
   end
 
-  # POST /demands
-  # POST /demands.json
   def create
     @demand = current_user.demands.new(demand_params)
 
@@ -64,34 +57,23 @@ class DemandsController < ApplicationController
   end
 
   def apply_form
-    if current_user.is_author_of?(@demand)
-      redirect_to root_url,
-        danger: '自己不能應徵自己的學習需求'
-    end
+    @demand_application = current_user.demand_applications.new
   end
 
   def apply
-    if current_user.already_apply_for?(@demand) || current_user.is_author_of?(@demand)
-      flash[:warning] = "Invalid action"
-    else
-      current_user.apply!(@demand)
+    @demand_application = current_user.demand_applications.new(demand_application_params)
+    @demand_application.demand = @demand
+    if @demand_application.save
       Notification.send_notification_with(current_user, @demand)
-    end
-    redirect_to @demand
-  end
-
-  def cancel_apply
-    if current_user.already_apply_for?(@demand)
-      current_user.cancel_apply!(@demand)
+      redirect_to @demand
     else
-      flash.now[:warning] = "無效的操作"
+      render :apply_form
     end
-    redirect_to @demand
   end
 
   def allow
     if current_user.is_author_of?(@demand)
-      @demand.update(instructor_param)
+      @demand.update(instrustor_params)
       redirect_to current_user
     end
   end
@@ -108,8 +90,12 @@ class DemandsController < ApplicationController
       params.require(:demand).permit(:description, { arrangement_ids: [] }, :language_id)
     end
 
-    def instructor_param
+    def instrustor_params
       params.require(:demand).permit(:instructor_id)
+    end
+
+    def demand_application_params
+      params.require(:demand_user).permit(:info)
     end
 
     def redirect_if_non_logged_in
@@ -117,6 +103,13 @@ class DemandsController < ApplicationController
         store_location
         flash.now[:danger] = "請先登入"
         redirect_to login_url
+      end
+    end
+
+    def check_is_author
+      if current_user.already_apply_for?(@demand) || current_user.is_author_of?(@demand)
+        redirect_to root_url,
+          danger: 'Invalid action'
       end
     end
 end

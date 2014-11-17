@@ -48,7 +48,7 @@
     <h3>Applied demands</h3>
     <div class="panel panel-default">
       <div class="panel-body">
-        <table class="table table-hover <%= 'empty-demands' if @user.applied_demands.blank? %>">
+        <table class="table table-hover <%= 'empty-demands' if @user.demand_applications.blank? %>">
           <thead>
             <tr>
               <th>Date</th>
@@ -58,22 +58,22 @@
           </thead>
 
           <tbody>
-            <% @user.applied_demands.each do |demand| %>
+            <% @user.demand_applications.each do |app| %>
               <tr class="show-user-demand">
-                <td><div class="neat-padding"><%= demand.created_at.strftime("%Y-%m-%d") %></div></td>
+                <td><div class="neat-padding"><%= app.created_at.strftime("%Y-%m-%d") %></div></td>
                 <td>
-                  <%= link_to demand do %>
-                    <%= image_tag "flags/thumbs/#{demand.language.flag}" %>
+                  <%= link_to demand_path(app.demand) do %>
+                    <%= image_tag "flags/thumbs/#{app.demand.language.flag}" %>
                   <% end %>
                 </td>
                 <td>
                   <div class="neat-padding">
-                    <%= demand.applicants.count %>
+                    <%= app.demand.applicants.count %>
                   </div>
                 </td>
               </tr>
             <% end %>
-            <%= "There are no applied demands here." if @user.applied_demands.blank? %>
+            <%= "There are no applied demands here." if @user.demand_applications.blank? %>
           </tbody>
         </table>
       </div>

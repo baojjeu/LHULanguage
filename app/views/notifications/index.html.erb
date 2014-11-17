@@ -3,7 +3,7 @@
 <ul>
   <% @notifications.each do |notification| %>
     <li>
-      <%= link_to notification.applicant.name, notification.applicant %>對你的<%= link_to '交換語言需求', notification.demand %>有興趣。
+      <%= link_to display_username(notification.applicant), notification.applicant %>對你的<%= link_to '交換語言需求', notification.demand %>有興趣。
     </li>
   <% end %>
 </ul>

@@ -8,10 +8,7 @@ class User < ActiveRecord::Base
   validates :email, :password, :password_confirmation, presence: true
 
   has_many :demands, dependent: :destroy
-
-  has_many :demand_users
-  has_many :applied_demands, through: :demand_users, source: :demand
-
+  has_many :demand_applications, class_name: 'DemandUser'
   has_many :notifications, dependent: :destroy
 
   # http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html#M001834
@@ -24,16 +21,8 @@ class User < ActiveRecord::Base
     email.downcase!
   end
 
-  def apply!(demand)
-    applied_demands << demand
-  end
-
-  def cancel_apply!(demand)
-    applied_demands.delete(demand)
-  end
-
   def already_apply_for?(demand)
-    applied_demands.include?(demand)
+    demand.applicants.include?(self)
   end
 
   def is_author_of?(demand)
