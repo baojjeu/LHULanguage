@@ -5,125 +5,20 @@
     <%= link_to(image_tag("flags/normal/#{@demand.language.flag}"),
         users_path(good_at: language_name(@demand.language))) %>
     <span class="lang-name"><%= @demand.language.name %></span>
-
-    <div class="show-demand-tab">
-      <ul id="myTab" class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#schedule" id="schedule-tab" role="tab" data-toggle="tab" aria-controls="schedule" aria-expanded="true">Expected schedule</a></li>
-
-        <li role="presentation" class=""><a href="#applicants" role="tab" id="applicants-tab" data-toggle="tab" aria-controls="applicants" aria-expanded="false">Applicants</a></li>
-
-        <li role="presentation" class=""><a href="#info" role="tab" id="info-tab" data-toggle="tab" aria-controls="info" aria-expanded="false">Extra information</a></li>
-      </ul>
-    </div>
+    <%= render 'nav' %>
   </div>
 </div>
 
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
-    <div id="myTabContent" class="tab-content">
-      <div role="tabpanel" class="tab-pane fade active in" id="schedule" aria-labelledby="schedule-tab">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="time-table">
-              <div class="time-options-field">
-                <table class="table">
-                  <thead>
-                    <tr class="week_time">
-                      <th></th>
-                      <th>Sun</th>
-                      <th>Mon</th>
-                      <th>Tue</th>
-                      <th>Wed</th>
-                      <th>Thur</th>
-                      <th>Fri</th>
-                      <th>Sat</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <th>A.M.</th>
-                      <% WeekTime.spec_moment('Morning').each do |t| %>
-                        <% if @demand.arrangements.include?(t) %>
-                          <td><span class="check"></span></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      <% end %>
-
-                    </tr>
-
-                    <tr>
-                      <th>Noon</th>
-                      <% WeekTime.spec_moment('Noon').each do |t| %>
-                        <% if @demand.arrangements.include?(t) %>
-                          <td><span class="check"></span></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      <% end %>
-                    </tr>
-
-                    <tr>
-                      <th>P.M.</th>
-                      <% WeekTime.spec_moment('Night').each do |t| %>
-                        <% if @demand.arrangements.include?(t) %>
-                          <td><span class="check"></span></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      <% end %>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div> <!-- time-table -->
-          </div>
-        </div>
-      </div>
-
-      <div role="tabpanel" class="tab-pane fade" id="applicants" aria-labelledby="applicants-tab">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <%= "There are no applicants here." if @demand.applicants.blank? %>
-            <% @demand.applicants.each do |applicant| %>
-              <%= link_to applicant do %>
-                <%= gravatar_for applicant, style: 'applicant-thumb', size: 48, title: display_username(applicant), image_class: 'applicant-avatar' %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div role="tabpanel" class="tab-pane fade" id="info" aria-labelledby="info-tab">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <%= simple_format(@demand.description) %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render 'content' %>
   </div>
 </div>
 
 <div class="footer apply-button-field">
   <div class="container">
     <div class="col-md-8 col-md-offset-2">
-      <!-- TODO: revised -->
-      <div class="pull-right">
-        <% if logged_in? %>
-            <% if current_user.already_apply_for?(@demand) %>
-              <%= link_to 'Applied', '#', class: 'btn btn-success disabled' %>
-            <% end %>
-
-            <% unless current_user.is_author_of?(@demand) || current_user.already_apply_for?(@demand) %>
-              <%= link_to 'Apply', apply_form_demand_path(@demand), class: 'btn btn-success' %>
-            <% end %>
-          </div>
-        <% else %>
-          <%= link_to 'Apply', apply_form_demand_path(@demand), class: 'btn btn-success' %>
-        <% end %>
-      </div>
+      <%= render 'footer' %>
     </div>
   </div>
 </div>

@@ -1,0 +1,83 @@
+<div id="myTabContent" class="tab-content">
+  <div role="tabpanel" class="tab-pane fade active in" id="schedule" aria-labelledby="schedule-tab">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="time-table">
+          <div class="time-options-field">
+            <table class="table">
+              <thead>
+                <tr class="week_time">
+                  <th></th>
+                  <th>Sun</th>
+                  <th>Mon</th>
+                  <th>Tue</th>
+                  <th>Wed</th>
+                  <th>Thur</th>
+                  <th>Fri</th>
+                  <th>Sat</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <th>A.M.</th>
+                  <% WeekTime.spec_moment('Morning').each do |t| %>
+                    <% if @demand.arrangements.include?(t) %>
+                      <td><span class="check"></span></td>
+                    <% else %>
+                      <td></td>
+                    <% end %>
+                  <% end %>
+
+                </tr>
+
+                <tr>
+                  <th>Noon</th>
+                  <% WeekTime.spec_moment('Noon').each do |t| %>
+                    <% if @demand.arrangements.include?(t) %>
+                      <td><span class="check"></span></td>
+                    <% else %>
+                      <td></td>
+                    <% end %>
+                  <% end %>
+                </tr>
+
+                <tr>
+                  <th>P.M.</th>
+                  <% WeekTime.spec_moment('Night').each do |t| %>
+                    <% if @demand.arrangements.include?(t) %>
+                      <td><span class="check"></span></td>
+                    <% else %>
+                      <td></td>
+                    <% end %>
+                  <% end %>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> <!-- time-table -->
+      </div>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="applicants" aria-labelledby="applicants-tab">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= "There are no applicants here." if @demand.applicants.blank? %>
+        <% @demand.applicants.each do |applicant| %>
+          <%= link_to applicant do %>
+            <%= gravatar_for applicant, style: 'applicant-thumb', size: 48, title: display_username(applicant), image_class: 'applicant-avatar' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="info" aria-labelledby="info-tab">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= simple_format(@demand.description) %>
+      </div>
+    </div>
+  </div>
+</div>
