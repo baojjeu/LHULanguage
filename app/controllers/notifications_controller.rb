@@ -2,7 +2,8 @@ class NotificationsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @notifications = @user.notifications
-    @notifications.update_all(is_checked: true)
+    respond_to do |format|
+      format.js { @notifications = @user.notifications }
+    end
   end
 end

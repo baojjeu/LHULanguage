@@ -199,6 +199,21 @@ body {
   }
 }
 
+
+
+// partial: notification
+.user-notification {
+  width: 300px;
+  height: 200px;
+  background: #e3e3e3;
+  border: 1px solid #fff;
+  position: fixed;
+  display: none;
+  font-size: 12px;
+  z-index: 1;
+  right: 0px;
+}
+
 // http://www.wpbeginner.com/wp-themes/how-to-display-round-gravatar-images-in-wordpress/
 // .avatar-nav {
 //   img {
