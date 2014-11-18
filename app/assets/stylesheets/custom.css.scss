@@ -163,7 +163,7 @@ body {
   background: image-url('backgrounds/school.png');
   border-bottom: solid #e3e3e3 1.2px;
   padding: 40px 0;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 
   .user-avatar {
     display: block;
@@ -189,6 +189,13 @@ body {
          -moz-border-radius: 50%;
               border-radius: 50%;
     }
+  }
+}
+
+.show-user-tab {
+  @extend .show-demand-tab;
+  a {
+    color: black;
   }
 }
 
