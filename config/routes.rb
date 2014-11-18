@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :demands do
     member do
         get :apply_form
+        get :determine
        post :apply
        post :cancel_apply
       patch :allow

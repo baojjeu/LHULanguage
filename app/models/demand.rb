@@ -10,8 +10,8 @@ class Demand < ActiveRecord::Base
   belongs_to :instructor, class_name: 'User'
   belongs_to :language
 
-  has_many :demand_users
-  has_many :applicants, through: :demand_users, source: :user
+  has_many :applications, class_name: 'DemandUser'
+  has_many :applicants, through: :applications, source: :user
 
   has_many :demand_times
   has_many :arrangements, through: :demand_times, source: :week_time

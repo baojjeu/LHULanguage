@@ -1,0 +1,9 @@
+<%= stylesheet_link_tag 'image-picker.css', media: 'all', 'data-turbolinks-track' => true %>
+
+<% @applicants = @demand.applicants.map { |applicant| [display_username(applicant), applicant.id, { 'data-img-src' => applicant_image_url(applicant, size: 48) }] } %>
+<div class="container">
+  <%= form_for @demand, url: allow_demand_path(@demand) do |f| %>
+    <%= f.select :instructor_id, @applicants, {}, { class: 'determine-demand' } %>
+    <%= f.submit %>
+  <% end %>
+</div>

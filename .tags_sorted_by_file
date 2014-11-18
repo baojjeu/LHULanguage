@@ -9,13 +9,14 @@ DemandsController	app/controllers/demands_controller.rb	/^class DemandsControlle
 allow	app/controllers/demands_controller.rb	/^  def allow$/;"	f	class:DemandsController
 apply	app/controllers/demands_controller.rb	/^  def apply$/;"	f	class:DemandsController
 apply_form	app/controllers/demands_controller.rb	/^  def apply_form$/;"	f	class:DemandsController
-cancel_apply	app/controllers/demands_controller.rb	/^  def cancel_apply$/;"	f	class:DemandsController
+check_is_author	app/controllers/demands_controller.rb	/^    def check_is_author$/;"	f	class:DemandsController
 create	app/controllers/demands_controller.rb	/^  def create$/;"	f	class:DemandsController
+demand_application_params	app/controllers/demands_controller.rb	/^    def demand_application_params$/;"	f	class:DemandsController
 demand_params	app/controllers/demands_controller.rb	/^    def demand_params$/;"	f	class:DemandsController
 destroy	app/controllers/demands_controller.rb	/^  def destroy$/;"	f	class:DemandsController
 edit	app/controllers/demands_controller.rb	/^  def edit$/;"	f	class:DemandsController
 index	app/controllers/demands_controller.rb	/^  def index$/;"	f	class:DemandsController
-instructor_param	app/controllers/demands_controller.rb	/^    def instructor_param$/;"	f	class:DemandsController
+instrustor_params	app/controllers/demands_controller.rb	/^    def instrustor_params$/;"	f	class:DemandsController
 new	app/controllers/demands_controller.rb	/^  def new$/;"	f	class:DemandsController
 redirect_if_non_logged_in	app/controllers/demands_controller.rb	/^    def redirect_if_non_logged_in$/;"	f	class:DemandsController
 set_demand	app/controllers/demands_controller.rb	/^    def set_demand$/;"	f	class:DemandsController
@@ -50,7 +51,7 @@ update	app/controllers/users_controller.rb	/^  def update$/;"	f	class:UsersContr
 user_params	app/controllers/users_controller.rb	/^    def user_params$/;"	f	class:UsersController
 ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
 display_username	app/helpers/application_helper.rb	/^  def display_username(user)$/;"	f	class:ApplicationHelper
-gravatar_for	app/helpers/application_helper.rb	/^  def gravatar_for(user, options = { size: 128, class: nil })$/;"	f	class:ApplicationHelper
+gravatar_for	app/helpers/application_helper.rb	/^  def gravatar_for(user, options = { size: 128, class: nil, image_class: nil, title: nil })$/;"	f	class:ApplicationHelper
 language_name	app/helpers/application_helper.rb	/^  def language_name(language)$/;"	f	class:ApplicationHelper
 nav_link	app/helpers/application_helper.rb	/^  def nav_link(link_text, link_path)$/;"	f	class:ApplicationHelper
 DemandsHelper	app/helpers/demands_helper.rb	/^module DemandsHelper$/;"	m
@@ -75,8 +76,6 @@ Profile	app/models/profile.rb	/^class Profile < ActiveRecord::Base$/;"	c
 ProfileLanguage	app/models/profile_language.rb	/^class ProfileLanguage < ActiveRecord::Base$/;"	c
 User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
 already_apply_for?	app/models/user.rb	/^  def already_apply_for?(demand)$/;"	f	class:User
-apply!	app/models/user.rb	/^  def apply!(demand)$/;"	f	class:User
-cancel_apply!	app/models/user.rb	/^  def cancel_apply!(demand)$/;"	f	class:User
 format_email!	app/models/user.rb	/^  def format_email!$/;"	f	class:User
 is_author_of?	app/models/user.rb	/^  def is_author_of?(demand)$/;"	f	class:User
 WeekTime	app/models/week_time.rb	/^class WeekTime < ActiveRecord::Base$/;"	c
@@ -120,6 +119,8 @@ AddUserToProfile	db/migrate/20141112075432_add_user_to_profile.rb	/^class AddUse
 change	db/migrate/20141112075432_add_user_to_profile.rb	/^  def change$/;"	f	class:AddUserToProfile
 ResetUserExperiencedLanguages	db/migrate/20141114061042_reset_user_experienced_languages.rb	/^class ResetUserExperiencedLanguages < ActiveRecord::Migration$/;"	c
 change	db/migrate/20141114061042_reset_user_experienced_languages.rb	/^  def change$/;"	f	class:ResetUserExperiencedLanguages
+AddApplicantInfoToDemandUsers	db/migrate/20141117143129_add_applicant_info_to_demand_users.rb	/^class AddApplicantInfoToDemandUsers < ActiveRecord::Migration$/;"	c
+change	db/migrate/20141117143129_add_applicant_info_to_demand_users.rb	/^  def change$/;"	f	class:AddApplicantInfoToDemandUsers
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 DemandsControllerTest	test/controllers/demands_controller_test.rb	/^class DemandsControllerTest < ActionController::TestCase$/;"	c
 ProfilesControllerTest	test/controllers/profiles_controller_test.rb	/^class ProfilesControllerTest < ActionController::TestCase$/;"	c

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117143129) do
+ActiveRecord::Schema.define(version: 20141118164224) do
 
   create_table "demand_languages", force: true do |t|
     t.integer  "demand_id"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20141117143129) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "language_id"
-    t.boolean  "is_available",  default: true
     t.integer  "instructor_id"
   end
 

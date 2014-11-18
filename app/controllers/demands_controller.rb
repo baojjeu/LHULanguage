@@ -1,6 +1,6 @@
 class DemandsController < ApplicationController
-  before_action :set_demand, only: [:show, :edit, :update, :destroy, :apply, :allow, :apply_form]
-  before_action :redirect_if_non_logged_in, only: [:new, :edit, :create, :update, :apply, :apply_form]
+  before_action :set_demand, only: [:show, :edit, :update, :destroy, :apply, :allow, :apply_form, :determine]
+  before_action :redirect_if_non_logged_in, only: [:new, :edit, :create, :update, :apply, :apply_form, :determine]
   before_action :check_is_author, only: :apply_form
 
   def index
@@ -32,8 +32,6 @@ class DemandsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /demands/1
-  # PATCH/PUT /demands/1.json
   def update
     respond_to do |format|
       if @demand.update(demand_params)
@@ -46,8 +44,6 @@ class DemandsController < ApplicationController
     end
   end
 
-  # DELETE /demands/1
-  # DELETE /demands/1.json
   def destroy
     @demand.destroy
     respond_to do |format|
@@ -76,6 +72,10 @@ class DemandsController < ApplicationController
       @demand.update(instrustor_params)
       redirect_to current_user
     end
+  end
+
+  def determine
+
   end
 
 

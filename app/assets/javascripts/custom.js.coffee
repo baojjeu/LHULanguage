@@ -11,7 +11,7 @@ $ ->
     placement: "right"
 
   # Profile page and new demand page
-  $(".exp-langs, .demand-language").imagepicker
+  $(".exp-langs, .demand-language, .determine-demand").imagepicker
     show_label: true
 
   # http://api.jquery.com/jquery.each/

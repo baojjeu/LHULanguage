@@ -4,9 +4,16 @@
     <% if current_user.already_apply_for?(@demand) %>
       <%= link_to 'Applied', '#', class: 'btn btn-success disabled' %>
     <% end %>
+
     <% unless current_user.is_author_of?(@demand) || current_user.already_apply_for?(@demand) %>
       <%= link_to 'Apply', apply_form_demand_path(@demand), class: 'btn btn-success' %>
     <% end %>
+
+    <% if current_user.is_author_of?(@demand) %>
+      <%= link_to 'Edit demand', edit_demand_path(@demand) %> or
+      <%= link_to 'Determine instructor', determine_demand_path(@demand), class: 'btn btn-success' %>
+    <% end %>
+
   <% else %>
     <%= link_to 'Apply', apply_form_demand_path(@demand), class: 'btn btn-success' %>
   <% end %>

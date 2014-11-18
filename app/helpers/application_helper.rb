@@ -16,6 +16,11 @@ module ApplicationHelper
     end
   end
 
+  def applicant_image_url(user, options = { size: 48 })
+    gravatar_id = Digest::MD5.hexdigest(user.email)
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{options[:size]}"
+  end
+
   def display_username(user)
     user.profile ? user.profile.nickname : user.email
   end
