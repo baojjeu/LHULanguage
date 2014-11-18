@@ -205,13 +205,23 @@ body {
 .user-notification {
   width: 300px;
   height: 200px;
-  background: #e3e3e3;
-  border: 1px solid #fff;
-  position: fixed;
-  display: none;
-  font-size: 12px;
+  position: absolute;
+  opacity: 0;
   z-index: 1;
-  right: 0px;
+  transition:.2s;
+  overflow: auto;
+  box-shadow: 0px 0px 20px #666;
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  right: 100px;
+  ul {
+    list-style: none;
+  }
+  &.open {
+    opacity: 1;
+    transition:.2s;
+  }
 }
 
 // http://www.wpbeginner.com/wp-themes/how-to-display-round-gravatar-images-in-wordpress/
