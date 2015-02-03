@@ -1,5 +1,6 @@
 $ ->
 
+
   $('.alert').delay(500).fadeIn "normal", ->
     $(this).delay(3000).fadeOut()
 
@@ -10,8 +11,14 @@ $ ->
   $('.index-demand-language').tooltip
     placement: "right"
 
+  $('.author').tooltip
+    placement: 'right'
+
   # Profile page and new demand page
   $(".exp-langs, .demand-language, .determine-demand").imagepicker
+    show_label: false
+
+  $('.determine-demand').imagepicker
     show_label: true
 
   # http://api.jquery.com/jquery.each/

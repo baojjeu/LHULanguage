@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.good_at(params[:good_at])
+    @users = params[:good_at].present? ? User.good_at(params[:good_at]) : User.all
   end
 
   # GET /users/1

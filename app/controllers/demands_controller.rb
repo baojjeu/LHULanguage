@@ -75,7 +75,6 @@ class DemandsController < ApplicationController
   end
 
   def determine
-
   end
 
 

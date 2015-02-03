@@ -6,12 +6,11 @@
         <thead>
           <tr>
             <th>Date</th>
-            <th>Language</th>
+            <th>Demand</th>
             <th>Author</th>
             <th></th>
           </tr>
         </thead>
-
         <tbody>
           <% @demands.available.each do |demand| %>
           <tr>
@@ -25,8 +24,7 @@
 
             <td>
               <%= link_to demand.author do %>
-                <%= gravatar_for(demand.author, size: 48) %>
-                <span><%= display_username demand.author %></span>
+                <%= gravatar_for(demand.author, size: 48, title: display_username(demand.author), image_class: 'author') %>
               <% end %>
             </td>
             <td>
